@@ -1,0 +1,45 @@
+<div class="container">
+    <h1 style="color: yellow;">{{message}}</h1>
+</div>
+
+
+<div class="cont">
+    <div class="main">
+        <h1 class="todo">Todo List</h1>
+        <div class="addTodo">
+            <form [formGroup]="todoForm">
+                <input type="text" placeholder="Enter Your List" size="50" formControlName="todo">
+                <img type="button" width="94" height="94" src="https://img.icons8.com/3d-fluency/94/add.png"
+                    alt="add" (click)="addTodoForm()"/>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th><input type="checkbox"></th>
+                <th>S.No</th>
+                <th>Id</th>
+                <th>Todo</th>
+                <th>Create Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let todo of totalTodo; let i = index">
+                <td><input type="checkbox" (change)="fieldsChange(todo)"></td>
+                <td>{{i+1}}</td>
+                <td>{{todo.id}}</td>
+                <td>{{todo.todo}}</td>
+                <td>{{todo.created_at | date:'mediumDate'}}</td>
+                <td>
+                    <img type="button" width="36" height="36" src="https://img.icons8.com/fluency/96/filled-trash.png"
+                        alt="filled-trash" (click)="deleteTodoFinally()"/>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
